@@ -50,7 +50,7 @@ async def c_playlist(client, message):
 @Client.on_message(filters.command(["skip", f"skip@{Config.BOT_USERNAME}"]) & admin_filter & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))
 async def skip_track(_, m: Message):
     if not Config.playlist:
-        k=await m.reply_text("⛔️ **Empty Playlist !**")
+        k=await m.reply_text("⛔️ **𝙴𝚖𝚙𝚝𝚢 𝙿𝚕𝚊𝚢𝚕𝚒𝚜𝚝 !**")
         await delete(k)
         return
     if len(m.command) == 1:
@@ -64,13 +64,13 @@ async def skip_track(_, m: Message):
             for i in items:
                 if 2 <= i <= (len(Config.playlist) - 1):
                     Config.playlist.pop(i)
-                    k=await m.reply_text(f"⏭ **Succesfully Skipped !** \n{i}. **{Config.playlist[i][1]}**")
+                    k=await m.reply_text(f"⏭ **𝚂𝚞𝚌𝚌𝚎𝚜𝚏𝚞𝚕𝚕𝚢 𝚂𝚔𝚒𝚙𝚙𝚎𝚍 !** \n{i}. **{Config.playlist[i][1]}**")
                     await delete(k)
                 else:
-                    k=await m.reply_text(f"⛔️ **Can't Skip First Two Video - {i} !**")
+                    k=await m.reply_text(f"⛔️ **𝙲𝚊𝚗'𝚝 𝚂𝚔𝚒𝚙 𝙵𝚒𝚛𝚜𝚝 𝚃𝚠𝚘 𝚅𝚒𝚍𝚎𝚘 - {i} !**")
                     await delete(k)
         except (ValueError, TypeError):
-            k=await m.reply_text("⛔️ **Invalid Input !**")
+            k=await m.reply_text("⛔️ **𝙸𝚗𝚟𝚊𝚕𝚒𝚍 𝙸𝚗𝚙𝚞𝚝 !**")
             await delete(k)
     pl=await get_playlist_str()
     if m.chat.type == "private":
@@ -82,93 +82,93 @@ async def skip_track(_, m: Message):
 @Client.on_message(filters.command(["pause", f"pause@{Config.BOT_USERNAME}"]) & admin_filter & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))
 async def pause_playing(_, m: Message):
     if Config.PAUSE:
-        k=await m.reply_text("⏸ **Already Paused !**")
+        k=await m.reply_text("⏸ **𝙰𝚕𝚛𝚎𝚊𝚍𝚢 𝙿𝚊𝚞𝚜𝚎𝚍 !**")
         await delete(k)
         return
     if not Config.CALL_STATUS:
-        k=await m.reply_text("🤖 **Didn't Joined Video Chat !**")
+        k=await m.reply_text("🤖 **𝙳𝚒𝚍𝚗'𝚝 𝙹𝚘𝚒𝚗𝚎𝚍 𝚅𝚒𝚍𝚎𝚘 𝙲𝚑𝚊𝚝 !**")
         await delete(k)
         return
     await pause()
-    k=await m.reply_text("⏸ **Paused Streaming !**")
+    k=await m.reply_text("⏸ **𝙿𝚊𝚞𝚜𝚎𝚍 𝚂𝚝𝚛𝚎𝚊𝚖𝚒𝚗𝚐 !**")
     await delete(k)
     
 
 @Client.on_message(filters.command(["resume", f"resume@{Config.BOT_USERNAME}"]) & admin_filter & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))
 async def resume_playing(_, m: Message):
     if not Config.PAUSE:
-        k=await m.reply_text("▶️ **Already Playing !**")
+        k=await m.reply_text("▶️ **𝙰𝚕𝚛𝚎𝚊𝚍𝚢 𝙿𝚕𝚊𝚢𝚒𝚗𝚐 !**")
         await delete(k)
         return
     if not Config.CALL_STATUS:
-        k=await m.reply_text("🤖 **Didn't Joined Video Chat !**")
+        k=await m.reply_text("🤖 **𝙳𝚒𝚍𝚗'𝚝 𝙹𝚘𝚒𝚗𝚎𝚍 𝚅𝚒𝚍𝚎𝚘 𝙲𝚑𝚊𝚝 !**")
         await delete(k)
         return
     await resume()
-    k=await m.reply_text("▶️ **Resumed Streaming !**")
+    k=await m.reply_text("▶️ **𝚁𝚎𝚜𝚞𝚖𝚎𝚍 𝚂𝚝𝚛𝚎𝚊𝚖𝚒𝚗𝚐 !**")
     await delete(k)
 
 
 @Client.on_message(filters.command(["volume", f"volume@{Config.BOT_USERNAME}"]) & admin_filter & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))
 async def set_vol(_, m: Message):
     if not Config.CALL_STATUS:
-        k=await m.reply_text("🤖 **Didn't Joined Video Chat !**")
+        k=await m.reply_text("🤖 **𝙳𝚒𝚍𝚗'𝚝 𝙹𝚘𝚒𝚗𝚎𝚍 𝚅𝚒𝚍𝚎𝚘 𝙲𝚑𝚊𝚝 !**")
         await delete(k)
         return
     if len(m.command) < 2:
-        k=await m.reply_text("🤖 **Please Pass Volume (0-200) !**")
+        k=await m.reply_text("🤖 **𝙿𝚕𝚎𝚊𝚜𝚎 𝙿𝚊𝚜𝚜 𝚅𝚘𝚕𝚞𝚖𝚎 (𝟶-𝟸𝟶𝟶) !**")
         await delete(k)
         return
     await volume(int(m.command[1]))
-    k=await m.reply_text(f"🔉 **Volume Set To {m.command[1]} !**")
+    k=await m.reply_text(f"🔉 **𝚅𝚘𝚕𝚞𝚖𝚎 𝚂𝚎𝚝 𝚃𝚘 {m.command[1]} !**")
     await delete(k)
     
 
 @Client.on_message(filters.command(["replay", f"replay@{Config.BOT_USERNAME}"]) & admin_filter & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))
 async def replay_playout(client, m: Message):
     if not Config.CALL_STATUS:
-        k=await m.reply_text("🤖 **Didn't Joined Video Chat !**")
+        k=await m.reply_text("🤖 **𝙳𝚒𝚍𝚗'𝚝 𝙹𝚘𝚒𝚗𝚎𝚍 𝚅𝚒𝚍𝚎𝚘 𝙲𝚑𝚊𝚝 !**")
         await delete(k)
         return
     await restart_playout()
-    k=await m.reply_text("🔂 **Replaying Stream !**")
+    k=await m.reply_text("🔂 **𝚁𝚎𝚙𝚕𝚊𝚢𝚒𝚗𝚐 𝚂𝚝𝚛𝚎𝚊𝚖 !**")
     await delete(k)
 
 
 @Client.on_message(filters.command(["mute", f"mute@{Config.BOT_USERNAME}"]) & admin_filter & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))
 async def set_mute(_, m: Message):
     if not Config.CALL_STATUS:
-        k=await m.reply_text("🤖 **Didn't Joined Video Chat !**")
+        k=await m.reply_text("🤖 **𝙳𝚒𝚍𝚗'𝚝 𝙹𝚘𝚒𝚗𝚎𝚍 𝚅𝚒𝚍𝚎𝚘 𝙲𝚑𝚊𝚝 !**")
         await delete(k)
         return
     if Config.MUTED:
-        k=await m.reply_text("🔇 **Already Muted !**")
+        k=await m.reply_text("🔇 **𝙰𝚕𝚛𝚎𝚊𝚍𝚢 𝙼𝚞𝚝𝚎𝚍 !**")
         await delete(k)
         return
     k=await mute()
     if k:
-        s=await m.reply_text(f"🔇 **Succesfully Muted !**")
+        s=await m.reply_text(f"🔇 **𝚂𝚞𝚌𝚌𝚎𝚜𝚏𝚞𝚕𝚕𝚢 𝙼𝚞𝚝𝚎𝚍 !**")
         await delete(s)
     else:
-        s=await m.reply_text("🔇 **Already Muted !**")
+        s=await m.reply_text("🔇 **𝙰𝚕𝚛𝚎𝚊𝚍𝚢 𝙼𝚞𝚝𝚎𝚍 !**")
         await delete(s)
 
 @Client.on_message(filters.command(["unmute", f"unmute@{Config.BOT_USERNAME}"]) & admin_filter & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))
 async def set_unmute(_, m: Message):
     if not Config.CALL_STATUS:
-        k=await m.reply_text("🤖 **Didn't Joined Video Chat !**")
+        k=await m.reply_text("🤖 **𝙳𝚒𝚍𝚗'𝚝 𝙹𝚘𝚒𝚗𝚎𝚍 𝚅𝚒𝚍𝚎𝚘 𝙲𝚑𝚊𝚝 !**")
         await delete(k)
         return
     if not Config.MUTED:
-        k=await m.reply_text("🔊 **Already Unmuted !**")
+        k=await m.reply_text("🔊 **𝙰𝚕𝚛𝚎𝚊𝚍𝚢 𝚄𝚗𝚖𝚞𝚝𝚎𝚍 !**")
         await delete(k)
         return
     k=await unmute()
     if k:
-        s=await m.reply_text(f"🔊 **Succesfully Unmuted !**")
+        s=await m.reply_text(f"🔊 **𝚂𝚞𝚌𝚌𝚎𝚜𝚏𝚞𝚕𝚕𝚢 𝚄𝚗𝚖𝚞𝚝𝚎𝚍 !**")
         await delete(s)
     else:
-        s=await m.reply_text("🔊 **Already Unmuted !**")
+        s=await m.reply_text("🔊 **𝙰𝚕𝚛𝚎𝚊𝚍𝚢 𝚄𝚗𝚖𝚞𝚝𝚎𝚍 !**")
         await delete(s)
 
 
@@ -177,14 +177,14 @@ async def show_current(client, m: Message):
     data=Config.DATA.get('FILE_DATA')
     if not data.get('dur', 0) or \
         data.get('dur') == 0:
-        title="▶️ <b>Streaming [Live Stream](https://t.me/AsmSafone) !</b>"
+        title="▶️ <b>𝚂𝚝𝚛𝚎𝚊𝚖𝚒𝚗𝚐 [𝙻𝚒𝚟𝚎 𝚂𝚝𝚛𝚎𝚊𝚖](https://t.me/STMbOTsUPPORTgROUP) !</b>"
     else:
         if Config.playlist:
             title=f"▶️ <b>{Config.playlist[0][1]}</b>"
         elif Config.STREAM_LINK:
-            title=f"▶️ <b>Streaming [Stream Link]({data['file']}) !</b>"
+            title=f"▶️ <b>𝚂𝚝𝚛𝚎𝚊𝚖𝚒𝚗𝚐 [𝚂𝚝𝚛𝚎𝚊𝚖 𝙻𝚒𝚗𝚔]({data['file']}) !</b>"
         else:
-            title=f"▶️ <b>Streaming [Startup Stream]({Config.STREAM_URL}) !</b>"
+            title=f"▶️ <b>𝚂𝚝𝚛𝚎𝚊𝚖𝚒𝚗𝚐 [𝚂𝚝𝚊𝚛𝚝𝚞𝚙 𝚂𝚝𝚛𝚎𝚊𝚖]({Config.STREAM_URL}) !</b>"
     if m.chat.type == "private":
         await m.reply_photo(
             photo=Config.THUMB_LINK,
@@ -208,17 +208,17 @@ async def show_current(client, m: Message):
 @Client.on_message(filters.command(["seek", f"seek@{Config.BOT_USERNAME}"]) & admin_filter & (filters.chat(Config.CHAT_ID) | filters.private | filters.chat(Config.LOG_GROUP)))
 async def seek_playout(client, m: Message):
     if not Config.CALL_STATUS:
-        k=await m.reply_text("🤖 **Didn't Joined Video Chat !**")
+        k=await m.reply_text("🤖 **𝙳𝚒𝚍𝚗'𝚝 𝙹𝚘𝚒𝚗𝚎𝚍 𝚅𝚒𝚍𝚎𝚘 𝙲𝚑𝚊𝚝 !**")
         await delete(k)
         return
     if not (Config.playlist or Config.STREAM_LINK):
-        k=await m.reply_text("⚠️ **Startup Stream Can't Be Seeked !**")
+        k=await m.reply_text("⚠️ **𝚂𝚝𝚊𝚛𝚝𝚞𝚙 𝚂𝚝𝚛𝚎𝚊𝚖 𝙲𝚊𝚗'𝚝 𝙱𝚎 𝚂𝚎𝚎𝚔𝚎𝚍 !**")
         await delete(k)
         return
     data=Config.DATA.get('FILE_DATA')
     if not data.get('dur', 0) or \
         data.get('dur') == 0:
-        k=await m.reply_text("⚠️ **This Stream Can't Be Seeked !**")
+        k=await m.reply_text("⚠️ **𝚃𝚑𝚒𝚜 𝚂𝚝𝚛𝚎𝚊𝚖 𝙲𝚊𝚗'𝚝 𝙱𝚎 𝚂𝚎𝚎𝚔𝚎𝚍 !**")
         await delete(k)
         return
     if ' ' in m.text:
@@ -226,7 +226,7 @@ async def seek_playout(client, m: Message):
         try:
             time=int(time)
         except:
-            k=await m.reply_text("⛔️ **Invalid Time Specified !**")
+            k=await m.reply_text("⛔️ **𝙸𝚗𝚟𝚊𝚕𝚒𝚍 𝚃𝚒𝚖𝚎 𝚂𝚙𝚎𝚌𝚒𝚏𝚒𝚎𝚍 !**")
             await delete(k)
             return
         k, string=await seek_file(time)
@@ -236,16 +236,16 @@ async def seek_playout(client, m: Message):
             return
         if not data.get('dur', 0) or \
             data.get('dur') == 0:
-            title="▶️ <b>Streaming [Live Stream](https://t.me/AsmSafone) !</b>"
+            title="▶️ <b>𝚂𝚝𝚛𝚎𝚊𝚖𝚒𝚗𝚐 [𝙻𝚒𝚟𝚎 𝚂𝚝𝚛𝚎𝚊𝚖](https://t.me/STMbOTsUPPORTgROUP) !</b>"
         else:
             if Config.playlist:
                 title=f"▶️ <b>{Config.playlist[0][1]}</b>"
             elif Config.STREAM_LINK:
-                title=f"▶️ <b>Streaming [Stream Link]({data['file']}) !</b>"
+                title=f"▶️ <b>𝚂𝚝𝚛𝚎𝚊𝚖𝚒𝚗𝚐 [𝚂𝚝𝚛𝚎𝚊𝚖 𝙻𝚒𝚗𝚔]({data['file']}) !</b>"
             else:
-                title=f"▶️ <b>Streaming [Startup Stream]({Config.STREAM_URL}) !</b>"
+                title=f"▶️ <b>𝚂𝚝𝚛𝚎𝚊𝚖𝚒𝚗𝚐 [𝚂𝚝𝚊𝚛𝚝𝚞𝚙 𝚂𝚝𝚛𝚎𝚊𝚖]({Config.STREAM_URL}) !</b>"
         s=await m.reply_text(f"{title}", reply_markup=await get_buttons(), disable_web_page_preview=True)
         await delete(s)
     else:
-        s=await m.reply_text("❗ **You Should Specify The Time In Second To Seek!** \n\nFor Example: \n• `/seek 10` to foward 10 sec. \n• `/seek -10` to rewind 10 sec.")
+        s=await m.reply_text("❗ **𝚈𝚘𝚞 𝚂𝚑𝚘𝚞𝚕𝚍 𝚂𝚙𝚎𝚌𝚒𝚏𝚢 𝚃𝚑𝚎 𝚃𝚒𝚖𝚎 𝙸𝚗 𝚂𝚎𝚌𝚘𝚗𝚍 𝚃𝚘 𝚂𝚎𝚎𝚔!** \n\n𝙵𝚘𝚛 𝙴𝚡𝚊𝚖𝚙𝚕𝚎: \n• `/𝚜𝚎𝚎𝚔 𝟷𝟶` 𝚝𝚘 𝚏𝚘𝚠𝚊𝚛𝚍 𝟷𝟶 𝚜𝚎𝚌. \n• `/seek -𝟷𝟶` 𝚝𝚘 𝚛𝚎𝚠𝚒𝚗𝚍 𝟷𝟶 𝚜𝚎𝚌.")
         await delete(s)
