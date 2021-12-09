@@ -26,41 +26,41 @@ from helpers.utils import delete, update, is_admin
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, InputMediaDocument
 
 
-HOME_TEXT = "👋🏻 **Hi [{}](tg://user?id={})**, \n\nI'm **Video Player Bot**. \nI Can Stream Lives, YouTube Videos & Telegram Video Files On Video Chat Of Telegram Channels & Groups 😉! \n\n**Made With ❤️ By @ImSafone!** 👑"
+HOME_TEXT = "👋🏻 **Hᴇʟʟᴏ [{}](tg://user?id={})**, \n\nI'ᴍ **Vɪᴅᴇᴏ Pʟᴀʏᴇʀ Bᴏᴛ**. \nI Cᴀɴ Sᴛʀᴇᴀᴍ Lɪᴠᴇs, YᴏᴜTᴜʙᴇ Vɪᴅᴇᴏs & Tᴇʟᴇɢʀᴀᴍ Vɪᴅᴇᴏ Fɪʟᴇs Oɴ Vɪᴅᴇᴏ Cʜᴀᴛ Oғ Tᴇʟᴇɢʀᴀᴍ Cʜᴀɴɴᴇʟs & Gʀᴏᴜᴘs 😉! \n\n**Mᴀᴅᴇ Wɪᴛʜ ❤️ Bʏ [ᔆᵀᴹ](https://t.me/storytym) !** 👑"
 HELP_TEXT = """
-💡 --**Setting Up**--:
+💡 --**Sᴇᴛᴛɪɴɢ Uᴘ**--:
 
-\u2022 Add the bot and user account in your group with admin rights.
-\u2022 Start a voice chat in your group & restart the bot if not joined to vc.
-\u2022 Use /play [video name] or use /play as a reply to an video file or youtube link.
+\u2022 Aᴅᴅ ᴛʜᴇ ʙᴏᴛ ᴀɴᴅ ᴜsᴇʀ ᴀᴄᴄᴏᴜɴᴛ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴡɪᴛʜ ᴀᴅᴍɪɴ ʀɪɢʜᴛs.
+\u2022 Sᴛᴀʀᴛ ᴀ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ & ʀᴇsᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ ɪғ ɴᴏᴛ ᴊᴏɪɴᴇᴅ ᴛᴏ ᴠᴄ.
+\u2022 Usᴇ /play [ᴠɪᴅᴇᴏ ɴᴀᴍᴇ] ᴏʀ ᴜsᴇ /play ᴀs ᴀ ʀᴇᴘʟʏ ᴛᴏ ᴀɴ ᴠɪᴅᴇᴏ ғɪʟᴇ ᴏʀ ʏᴏᴜᴛᴜʙᴇ ʟɪɴᴋ.
 
-💡 --**Common Commands**--:
+💡 --**Cᴏᴍᴍᴏɴ Cᴏᴍᴍᴀɴᴅs**--:
 
-\u2022 `/start` - start the bot
-\u2022 `/help` - shows the help
-\u2022 `/current` - show current track
-\u2022 `/playlist` - shows the playlist
+\u2022 `/start` - sᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ
+\u2022 `/help` - sʜᴏᴡs ᴛʜᴇ ʜᴇʟᴘ
+\u2022 `/current` - sʜᴏᴡ ᴄᴜʀʀᴇɴᴛ ᴛʀᴀᴄᴋ
+\u2022 `/playlist` - sʜᴏᴡs ᴛʜᴇ ᴘʟᴀʏʟɪsᴛ
 
-💡 --**Admins Commands**--:
+💡 --**Aᴅᴍɪɴs Cᴏᴍᴍᴀɴᴅs**--:
 
-\u2022 `/seek` - seek the video
-\u2022 `/skip` - skip current video
-\u2022 `/stream` - start live stream
-\u2022 `/pause` - pause playing video
-\u2022 `/resume` - resume playing video
-\u2022 `/mute` - mute the vc userbot
-\u2022 `/unmute` - unmute the vc userbot
-\u2022 `/leave` - leave the voice chat
-\u2022 `/shuffle` - shuffle the playlist
-\u2022 `/volume` - change vc volume (0-200)
-\u2022 `/replay` - play from the beginning
-\u2022 `/clrlist` - clear the playlist queue
-\u2022 `/restart` - update & restart the bot
-\u2022 `/setvar` - set/change heroku configs
-\u2022 `/getlogs` - get the ffmpeg & bot logs
+\u2022 `/seek` - sᴇᴇᴋ ᴛʜᴇ ᴠɪᴅᴇᴏ
+\u2022 `/skip` - sᴋɪᴘ ᴄᴜʀʀᴇɴᴛ ᴠɪᴅᴇᴏ
+\u2022 `/stream` - sᴛᴀʀᴛ ʟɪᴠᴇ sᴛʀᴇᴀᴍ
+\u2022 `/pause` - ᴘᴀᴜsᴇ ᴘʟᴀʏɪɴɢ ᴠɪᴅᴇᴏ
+\u2022 `/resume` - ʀᴇsᴜᴍᴇ ᴘʟᴀʏɪɴɢ ᴠɪᴅᴇᴏ
+\u2022 `/mute` - ᴍᴜᴛᴇ ᴛʜᴇ ᴠᴄ ᴜsᴇʀʙᴏᴛ
+\u2022 `/unmute` - ᴜɴᴍᴜᴛᴇ ᴛʜᴇ ᴠᴄ ᴜsᴇʀʙᴏᴛ
+\u2022 `/leave` - ʟᴇᴀᴠᴇ ᴛʜᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ
+\u2022 `/shuffle` - sʜᴜғғʟᴇ ᴛʜᴇ ᴘʟᴀʏʟɪsᴛ
+\u2022 `/volume` - ᴄʜᴀɴɢᴇ ᴠᴄ ᴠᴏʟᴜᴍᴇ (0-200)
+\u2022 `/replay` - ᴘʟᴀʏ ғʀᴏᴍ ᴛʜᴇ ʙᴇɢɪɴɴɪɴɢ
+\u2022 `/clrlist` - ᴄʟᴇᴀʀ ᴛʜᴇ ᴘʟᴀʏʟɪsᴛ ᴏ̨ᴜᴇᴜᴇ
+\u2022 `/restart` - ᴜᴘᴅᴀᴛᴇ & ʀᴇsᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ
+\u2022 `/setvar` - sᴇᴛ/ᴄʜᴀɴɢᴇ ʜᴇʀᴏᴋᴜ ᴄᴏɴғɪɢs
+\u2022 `/getlogs` - ɢᴇᴛ ᴛʜᴇ ғғᴍᴘᴇɢ & ʙᴏᴛ ʟᴏɢs
 
-© **Powered By** : 
-**@AsmSafone | @AsmSupport** 👑
+© **Pᴏᴡᴇʀᴇᴅ Bʏ** : 
+**[ᔆᵀᴹ 👑](https://t.me/storytym)** 
 """
 
 admin_filter=filters.create(is_admin) 
@@ -69,18 +69,18 @@ admin_filter=filters.create(is_admin)
 async def start(client, message):
     buttons = [
             [
-                InlineKeyboardButton("SEARCH VIDEOS", switch_inline_query_current_chat=""),
+                InlineKeyboardButton("𝚂𝙴𝙰𝚁𝙲𝙷 𝚅𝙸𝙳𝙴𝙾𝚂", switch_inline_query_current_chat=""),
             ],
             [
-                InlineKeyboardButton("CHANNEL", url="https://t.me/AsmSafone"),
-                InlineKeyboardButton("SUPPORT", url="https://t.me/AsmSupport"),
+                InlineKeyboardButton("𝙲𝙷𝙰𝙽𝙽𝙴𝙻", url="https://t.me/storytimeoGG"),
+                InlineKeyboardButton("𝙰𝙽𝚈 𝙷𝙴𝙻𝙿", url="https://t.me/STMbOTsUPPORTgROUP"),
             ],
             [
-                InlineKeyboardButton("MORE BOTS", url="https://t.me/AsmSafone/173"),
-                InlineKeyboardButton("SOURCE CODE", url="https://github.com/S1-BOTS/VideoPlayerBot/tree/alpha"),
+                InlineKeyboardButton("𝙱𝙾𝚃 𝙴𝙳𝚃𝙾𝚁", url="https://t.me/VAMPIRE_KING_NO_1"),
+                InlineKeyboardButton("𝙼𝙾𝚅𝙸𝙴 𝙶𝚁𝙾𝚄𝙿", url="https://t.me/storytym"),
             ],
             [
-                InlineKeyboardButton("❔ HOW TO USE ❔", callback_data="help"),
+                InlineKeyboardButton("𝙷𝙾𝚆 𝚃𝙾 𝚄𝚂𝙴", callback_data="help"),
             ]
             ]
     reply_markup = InlineKeyboardMarkup(buttons)
@@ -92,19 +92,19 @@ async def start(client, message):
 async def show_help(client, message):
     buttons = [
             [
-                InlineKeyboardButton("SEARCH VIDEOS", switch_inline_query_current_chat=""),
+                InlineKeyboardButton("𝚂𝙴𝙰𝚁𝙲𝙷 𝚅𝙸𝙳𝙴𝙾𝚂", switch_inline_query_current_chat=""),
             ],
             [
-                InlineKeyboardButton("CHANNEL", url="https://t.me/AsmSafone"),
-                InlineKeyboardButton("SUPPORT", url="https://t.me/AsmSupport"),
+                InlineKeyboardButton("𝙲𝙷𝙰𝙽𝙽𝙴𝙻", url="https://t.me/storytimeoGG"),
+                InlineKeyboardButton("𝙰𝙽𝚈 𝙷𝙴𝙻𝙿", url="https://t.me/STMbOTsUPPORTgROUP"),
             ],
             [
-                InlineKeyboardButton("MORE BOTS", url="https://t.me/AsmSafone/173"),
-                InlineKeyboardButton("SOURCE CODE", url="https://github.com/S1-BOTS/VideoPlayerBot/tree/alpha"),
+                InlineKeyboardButton("𝙱𝙾𝚃 𝙴𝙳𝚃𝙾𝚁", url="t.me/VAMPIRE_KING_NO_1"),
+                InlineKeyboardButton("𝙼𝙾𝚅𝙸𝙴 𝙶𝚁𝙾𝚄𝙿", url="https://t.me/storytym"),
             ],
             [
-                InlineKeyboardButton("BACK HOME", callback_data="home"),
-                InlineKeyboardButton("CLOSE MENU", callback_data="close"),
+                InlineKeyboardButton("𝙱𝙰𝙲𝙺 𝙷𝙾𝙼𝙴", callback_data="home"),
+                InlineKeyboardButton("𝙲𝙻𝙾𝚂𝙴 𝙼𝙴𝙽𝚄", callback_data="close"),
             ]
             ]
     reply_markup = InlineKeyboardMarkup(buttons)
@@ -127,7 +127,7 @@ async def update_handler(client, message):
         await k.edit("🔄 **Restarting, Please Wait...**")
     await update()
     try:
-        await k.edit("✅ **Restarted Successfully! \nJoin @AsmSafone For Update!**")
+        await k.edit("✅ **Restarted Successfully! \nJoin @storytimeoG For Update!**")
         await k.reply_to_message.delete()
     except:
         pass
