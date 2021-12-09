@@ -30,16 +30,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
     admins = await get_admins(Config.CHAT_ID)
     if query.from_user.id not in admins and query.data != "help":
         await query.answer(
-            "You're Not Allowed! 🤣",
+            "𝚈𝚘𝚞'𝚛𝚎 𝙽𝚘𝚝 𝙰𝚕𝚕𝚘𝚠𝚎𝚍! 🤣",
             show_alert=True
             )
         return
     if query.data.lower() == "shuffle":
         if not Config.playlist:
-            await query.answer("⛔️ Empty Playlist !", show_alert=True)
+            await query.answer("⛔️ 𝙴𝚖𝚙𝚝𝚢 𝙿𝚕𝚊𝚢𝚕𝚒𝚜𝚝 !", show_alert=True)
             return
         await shuffle_playlist()
-        await query.answer("🔁 Shuffling !", show_alert=True)
+        await query.answer("🔁 𝚂𝚑𝚞𝚏𝚏𝚕𝚒𝚗𝚐 !", show_alert=True)
         await sleep(1)
         try:
             await query.edit_message_reply_markup(reply_markup=await get_buttons())
@@ -48,10 +48,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data.lower() == "pause":
         if Config.PAUSE:
-            await query.answer("⏸ Already Paused !", show_alert=True)
+            await query.answer("⏸ 𝙰𝚕𝚛𝚎𝚊𝚍𝚢 𝙿𝚊𝚞𝚜𝚎𝚍 !", show_alert=True)
         else:
             await pause()
-            await query.answer("⏸ Paused !", show_alert=True)
+            await query.answer("⏸ 𝙿𝚊𝚞𝚜𝚎𝚍 !", show_alert=True)
             await sleep(1)
         try:
             await query.edit_message_reply_markup(reply_markup=await get_buttons())
@@ -60,10 +60,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
     
     elif query.data.lower() == "resume":   
         if not Config.PAUSE:
-            await query.answer("▶️ Already Playing !", show_alert=True)
+            await query.answer("▶️ 𝙰𝚕𝚛𝚎𝚊𝚍𝚢 𝙿𝚕𝚊𝚢𝚒𝚗𝚐 !", show_alert=True)
         else:
             await resume()
-            await query.answer("▶️ Resumed !", show_alert=True)
+            await query.answer("▶️ 𝚁𝚎𝚜𝚞𝚖𝚎𝚍 !", show_alert=True)
             await sleep(1)
         try:
             await query.edit_message_reply_markup(reply_markup=await get_buttons())
@@ -72,17 +72,17 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data.lower() == "skip":   
         if not Config.playlist:
-            await query.answer("⛔️ Empty Playlist !", show_alert=True)
+            await query.answer("⛔️ 𝙴𝚖𝚙𝚝𝚢 𝙿𝚕𝚊𝚢𝚕𝚒𝚜𝚝 !", show_alert=True)
         else:
             await skip()
-            await query.answer("⏩ Skipped !", show_alert=True)
+            await query.answer("⏩ 𝚂𝚔𝚒𝚙𝚙𝚎𝚍 !", show_alert=True)
             await sleep(1)
         if Config.playlist:
             title=f"▶️ <b>{Config.playlist[0][1]}</b>"
         elif Config.STREAM_LINK:
-            title=f"▶️ <b>Streaming [Stream Link]({Config.DATA['FILE_DATA']['file']}) !</b>"
+            title=f"▶️ <b>𝚂𝚝𝚛𝚎𝚊𝚖𝚒𝚗𝚐 [𝚂𝚝𝚛𝚎𝚊𝚖 𝙻𝚒𝚗𝚔]({Config.DATA['FILE_DATA']['file']}) !</b>"
         else:
-            title=f"▶️ <b>Streaming [Startup Stream]({Config.STREAM_URL}) !</b>"
+            title=f"▶️ <b>𝚂𝚝𝚛𝚎𝚊𝚖𝚒𝚗𝚐 [𝚂𝚝𝚊𝚛𝚝𝚞𝚙 𝚂𝚝𝚛𝚎𝚊𝚖]({Config.STREAM_URL}) !</b>"
         try:
             await query.edit_message_text(f"{title}",
                 reply_markup=await get_buttons()
@@ -92,10 +92,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data.lower() == "replay":
         if not Config.playlist:
-            await query.answer("⛔️ Empty Playlist !", show_alert=True)
+            await query.answer("⛔️ 𝙴𝚖𝚙𝚝𝚢 𝙿𝚕𝚊𝚢𝚕𝚒𝚜𝚝 !", show_alert=True)
         else:
             await restart_playout()
-            await query.answer("🔂 Replaying !", show_alert=True)
+            await query.answer("🔂 𝚁𝚎𝚙𝚕𝚊𝚢𝚒𝚗𝚐 !", show_alert=True)
             await sleep(1)
         try:
             await query.edit_message_reply_markup(reply_markup=await get_buttons())
@@ -105,10 +105,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data.lower() == "mute":
         if Config.MUTED:
             await unmute()
-            await query.answer("🔉 Unmuted !", show_alert=True)
+            await query.answer("🔉 𝚄𝚗𝚖𝚞𝚝𝚎𝚍 !", show_alert=True)
         else:
             await mute()
-            await query.answer("🔇 Muted !", show_alert=True)
+            await query.answer("🔇 𝙼𝚞𝚝𝚎𝚍 !", show_alert=True)
         await sleep(1)
         try:
             await query.edit_message_reply_markup(reply_markup=await get_buttons())
@@ -117,13 +117,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data.lower() == "seek":
         if not Config.CALL_STATUS:
-            return await query.answer("⛔️ Empty Playlist !", show_alert=True)
+            return await query.answer("⛔️ 𝙴𝚖𝚙𝚝𝚢 𝙿𝚕𝚊𝚢𝚕𝚒𝚜𝚝 !", show_alert=True)
         if not (Config.playlist or Config.STREAM_LINK):
-            return await query.answer("⚠️ Startup Stream Can't Be Seeked !", show_alert=True)
+            return await query.answer("⚠️ 𝚂𝚝𝚊𝚛𝚝𝚞𝚙 𝚂𝚝𝚛𝚎𝚊𝚖 𝙲𝚊𝚗'𝚝 𝙱𝚎 𝚂𝚎𝚎𝚔𝚎𝚍 !", show_alert=True)
         data=Config.DATA.get('FILE_DATA')
         if not data.get('dur', 0) or \
             data.get('dur') == 0:
-            return await query.answer("⚠️ This Stream Can't Be Seeked !", show_alert=True)
+            return await query.answer("⚠️ 𝚃𝚑𝚒𝚜 𝚂𝚝𝚛𝚎𝚊𝚖 𝙲𝚊𝚗'𝚝 𝙱𝚎 𝚂𝚎𝚎𝚔𝚎𝚍 !", show_alert=True)
         k, reply = await seek_file(10)
         if k == False:
             return await query.answer(reply, show_alert=True)
@@ -134,13 +134,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data.lower() == "rewind":
         if not Config.CALL_STATUS:
-            return await query.answer("⛔️ Empty Playlist !", show_alert=True)
+            return await query.answer("⛔️ 𝙴𝚖𝚙𝚝𝚢 𝙿𝚕𝚊𝚢𝚕𝚒𝚜𝚝 !", show_alert=True)
         if not (Config.playlist or Config.STREAM_LINK):
-            return await query.answer("⚠️ Startup Stream Can't Be Seeked !", show_alert=True)
+            return await query.answer("⚠️ 𝚂𝚝𝚊𝚛𝚝𝚞𝚙 𝚂𝚝𝚛𝚎𝚊𝚖 𝙲𝚊𝚗'𝚝 𝙱𝚎 𝚂𝚎𝚎𝚔𝚎𝚍 !", show_alert=True)
         data=Config.DATA.get('FILE_DATA')
         if not data.get('dur', 0) or \
             data.get('dur') == 0:
-            return await query.answer("⚠️ This Stream Can't Be Seeked !", show_alert=True)
+            return await query.answer("⚠️ 𝚃𝚑𝚒𝚜 𝚂𝚝𝚛𝚎𝚊𝚖 𝙲𝚊𝚗'𝚝 𝙱𝚎 𝚂𝚎𝚎𝚔𝚎𝚍 !", show_alert=True)
         k, reply = await seek_file(-10)
         if k == False:
             return await query.answer(reply, show_alert=True)
@@ -152,19 +152,19 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data.lower() == "help":
         buttons = [
             [
-                InlineKeyboardButton("SEARCH VIDEOS", switch_inline_query_current_chat=""),
+                InlineKeyboardButton("𝚂𝙴𝙰𝚁𝙲𝙷 𝚅𝙸𝙳𝙴𝙾𝚂", switch_inline_query_current_chat=""),
             ],
             [
-                InlineKeyboardButton("CHANNEL", url="https://t.me/AsmSafone"),
-                InlineKeyboardButton("SUPPORT", url="https://t.me/AsmSupport"),
+                InlineKeyboardButton("𝙲𝙷𝙰𝙽𝙽𝙴𝙻", url="t.me/storytimeoGG"),
+                InlineKeyboardButton("𝙰𝙽𝚈 𝙷𝙴𝙻𝙿", url="t.me/STMbOTsUPPORTgROUP"),
             ],
             [
-                InlineKeyboardButton("MORE BOTS", url="https://t.me/AsmSafone/173"),
-                InlineKeyboardButton("SOURCE CODE", url="https://github.com/S1-BOTS/VideoPlayerBot/tree/alpha"),
+                InlineKeyboardButton("𝙱𝙾𝚃 𝙴𝙳𝚃𝙾𝚁", url="t.me/VAMPIRE_KING_NO_1"),
+                InlineKeyboardButton("𝙼𝙾𝚅𝙸𝙴 𝙶𝚁𝙾𝚄𝙿", url="https://t.me/storytym"),
             ],
             [
-                InlineKeyboardButton("BACK HOME", callback_data="home"),
-                InlineKeyboardButton("CLOSE MENU", callback_data="close"),
+                InlineKeyboardButton("𝙱𝙰𝙲𝙺 𝙷𝙾𝙼𝙴", callback_data="home"),
+                InlineKeyboardButton("𝙲𝙻𝙾𝚂𝙴 𝙼𝙴𝙽𝚄", callback_data="close"),
             ]
             ]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -179,18 +179,18 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data.lower() == "home":
         buttons = [
             [
-                InlineKeyboardButton("SEARCH VIDEOS", switch_inline_query_current_chat=""),
+                InlineKeyboardButton("𝚂𝙴𝙰𝚁𝙲𝙷 𝚅𝙸𝙳𝙴𝙾𝚂", switch_inline_query_current_chat=""),
             ],
             [
-                InlineKeyboardButton("CHANNEL", url="https://t.me/AsmSafone"),
-                InlineKeyboardButton("SUPPORT", url="https://t.me/AsmSupport"),
+                InlineKeyboardButton("𝙲𝙷𝙰𝙽𝙽𝙴𝙻", url="https://t.me/storytimeoGG"),
+                InlineKeyboardButton("𝙰𝙽𝚈 𝙷𝙴𝙻𝙿", url="https://t.me/STMbOTsUPPORTgROUP"),
             ],
             [
-                InlineKeyboardButton("MORE BOTS", url="https://t.me/AsmSafone/173"),
-                InlineKeyboardButton("SOURCE CODE", url="https://github.com/S1-BOTS/VideoPlayerBot/tree/alpha"),
+                InlineKeyboardButton("𝙱𝙾𝚃 𝙴𝙳𝚃𝙾𝚁", url="https://t.me/VAMPIRE_KING_NO_1"),
+                InlineKeyboardButton("𝙼𝙾𝚅𝙸𝙴 𝙶𝚁𝙾𝚄𝙿", url="https://t.me/storytym"),
             ],
             [
-                InlineKeyboardButton("❔ HOW TO USE ❔", callback_data="help"),
+                InlineKeyboardButton("𝙷𝙾𝚆 𝚃𝙾 𝚄𝚂𝙴 𝙼𝙴", callback_data="help"),
             ]
             ]
         reply_markup = InlineKeyboardMarkup(buttons)
