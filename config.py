@@ -74,7 +74,7 @@ class Config:
     if IS_NONSTOP_STREAM=="False":
         IS_NONSTOP_STREAM=None
         LOGGER.warning("Nonstop Live Stream Feature Disabled !")
-    THUMB_LINK=os.environ.get("THUMB_LINK", "https://telegra.ph//file/3ed5eafa4a95960d33980.jpg")
+    THUMB_LINK=os.environ.get("THUMB_LINK", "https://telegra.ph/file/1267e19a3210853b1d699.jpg")
 
     # Extra Variables ( For Heroku )
 
