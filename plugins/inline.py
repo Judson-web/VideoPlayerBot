@@ -25,14 +25,14 @@ from pyrogram.types import InlineQueryResultArticle, InlineQueryResultPhoto, Inp
 
 buttons = [
             [
-                InlineKeyboardButton("❔ HOW TO USE ME ❔", callback_data="help"),
+                InlineKeyboardButton("𝙷𝙾𝚆 𝚃𝙾 𝚄𝚂𝙴 𝙼𝙴", callback_data="help"),
             ],
             [
-                InlineKeyboardButton("CHANNEL", url="https://t.me/AsmSafone"),
-                InlineKeyboardButton("SUPPORT", url="https://t.me/AsmSupport"),
+                InlineKeyboardButton("𝙲𝙷𝙰𝙽𝙽𝙴𝙻", url="t.me/storytimeoGG"),
+                InlineKeyboardButton("𝙰𝙽𝚈 𝙷𝙴𝙻𝙿", url="t.me/STMbOTsUPPORTgROUP"),
             ],
             [
-                InlineKeyboardButton("🤖 MAKE YOUR OWN BOT 🤖", url="https://heroku.com/deploy?template=https://github.com/S1-BOTS/VideoPlayerBot/tree/alpha"),
+                InlineKeyboardButton("𝙱𝙾𝚃 𝙴𝙳𝚃𝙾𝚁", url="t.me/VAMPIRE_KING_NO_1"),
             ]
          ]
 
@@ -48,10 +48,10 @@ async def search(client, query):
     if query.query == "SAF_ONE":
         answers.append(
             InlineQueryResultPhoto(
-                title="Deploy Own Video Player Bot",
-                thumb_url="https://telegra.ph//file/3ed5eafa4a95960d33980.jpg",
-                photo_url="https://telegra.ph//file/3ed5eafa4a95960d33980.jpg",
-                caption=f"{Config.REPLY_MESSAGE}\n\n<b>© Powered By : \n@AsmSafone | @AsmSupport 👑</b>",
+                title="𝙼𝚎𝚙𝚑𝚒𝚜𝚝𝚘 𝚅𝚎𝚍𝚒𝚘 𝙿𝚕𝚊𝚢𝚎𝚛",
+                thumb_url="https://telegra.ph/file/1267e19a3210853b1d699.jpg",
+                photo_url="https://telegra.ph/file/1267e19a3210853b1d699.jpg",
+                caption=f"{Config.REPLY_MESSAGE}\n\n<b>© Powered By : \n@storytym | @storytimeoG 👑</b>",
                 reply_markup=InlineKeyboardMarkup(buttons)
                 )
             )
